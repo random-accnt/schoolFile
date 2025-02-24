@@ -14,7 +14,7 @@ const (
 	PREDNASKA     = 0
 	CVIKO         = 1
 	sep           = ";"
-	timetablePath = "/home/jirka/projects/schoolFile/rozvrh"
+	timetablePath = "/home/jirka/git/schoolFile/rozvrh"
 )
 
 var dayToNum map[string]int = map[string]int{
@@ -118,14 +118,14 @@ func parseLesson(splitted []string) (Lesson, error) {
 	// př / cv
 	var lessonType int
 	switch splitted[5] {
-	case "Přednáška":
+	case "přednáška":
 		lessonType = PREDNASKA
 		break
-	case "Cvičení":
+	case "cvičení":
 		lessonType = CVIKO
 		break
 	default:
-		return Lesson{}, errors.New("Don't know this lesson type: " + splitted[5])
+		return Lesson{}, errors.New("Don't know this lesson type: " + splitted[5] + "\n\tError on lesson " + splitted[3])
 	}
 
 	return Lesson{Day: day, Start: start, End: end, Id: splitted[3], Name: splitted[4], LessonType: lessonType}, nil

@@ -11,8 +11,8 @@ import (
 	"time"
 )
 
-var startDate = time.Date(2024, time.February, 12, 0, 0, 0, 0, time.UTC)
-var SCHOOL_DIR = "Dokumenty/Skola/LS2024/"
+var startDate = time.Date(2025, time.February, 12, 0, 0, 0, 0, time.UTC)
+var SCHOOL_DIR = "Documents/school/LS_2025_26/"
 
 func responseToBool(response string) (bool, error) {
 	response = strings.ToLower(response)
@@ -157,6 +157,9 @@ func main() {
 	}
 
 	if openEditor {
+		// TODO: fix editor open, for now just return
+		return
+
 		cmd := exec.Command("kitty", "@", "launch", "--type=tab", "nvim", lessonDir+filename, "--cmd", "cd %:h")
 		cmd.Env = os.Environ()
 		err := cmd.Start()
